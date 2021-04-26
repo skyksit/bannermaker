@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no"
+    />
+    <title>Banner Maker - Free Online Banner Maker</title>
+    <meta name="description" content="Free Online Banner Maker " />
+    <!-- Tailwind css -->
+    <link href="css/index.css" rel="stylesheet">
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap" rel="stylesheet">
+    <!-- Web Site SEO Setting -->
+    <link rel="canonical" href="https://skyksit.com/bannermaker/" />
+    <link rel="icon" href="favicon.ico" />
+    <meta name="name" content="Banner Maker" />
+    <meta name="description" content="Free Online Banner Maker "/>
+    <meta name="image" content="icons/icon-192x192.png" />
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Banner Maker" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Banner" />
+    <link rel="apple-touch-icon" href="icons/icon-48x48.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="icons/icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="96x96" href="icons/icon-96x96.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="icons/icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="icons/icon-192x192.png" />
+    <meta name="msapplication-TileImage" content="icons/icon-144x144.png" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <!-- OpenGraph -->
+    <meta property="og:site_name" content="Banner Maker" />
+    <meta property="og:url" content="https://skyksit.com/bannermaker" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Banner Maker" />
+    <meta property="og:description" content="Free Online Banner Maker "/>
+    <meta property="og:image" content="icons/icon-144x144.png" />
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="skyksit.com" />
+    <meta name="twitter:creator" content="skyksit" />
+    <meta name="twitter:url" content="https://skyksit.com/bannermaker" />
+    <meta name="twitter:title" content="Banner Maker" />
+    <meta name="twitter:description" content="Free Online Banner Maker "/>
+    <meta name="twitter:image" content="icons/icon-144x144.png" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/huebee.min.css" media="screen">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="js/huebee.pkgd.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="flex justify-center font-sans text-3xl font-bold pl-5">
+        <a href="https://skyksit.com/bannermaker">Banner Maker</a>
+      </div>
+    </header>
+    <main>
+      <div id="actions" class="flex flex-wrap items-center justify-center space-x-4">
+        <div class="inline-block">
+          <button id="download" class="bg-black rounded-md text-white p-1 m-2 font-bold hover:bg-red-700" onclick="downloadBanner()">
+            <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="inline"><path d="M7.5 10.5l-3.25-3m3.25 3l3-3m-3 3V1m6 6v6.5h-12V7" stroke="currentColor"></path></svg>
+            Download
+          </button>
+        </div>
+        <div class="inline-block">
+          <button id="random" class="text-center bg-black rounded-md text-white p-1 m-2 font-bold hover:bg-red-700" onclick="randomizeColor()">
+            <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="inline"><path d="M14 8.495v-.5h-1v.5h1zM7.5 2.999H8v-1h-.5v1zm1-.5l.353.353.354-.353-.354-.354-.353.354zM13 8.495a5.499 5.499 0 01-5.5 5.496v1c3.589 0 6.5-2.909 6.5-6.496h-1zM7.5 13.99A5.499 5.499 0 012 8.495H1a6.499 6.499 0 006.5 6.496v-1zM2 8.495a5.499 5.499 0 015.5-5.496v-1A6.499 6.499 0 001 8.495h1zM6.147.854l2 1.998.706-.707-2-1.999-.706.708zm2 1.291l-2 1.999.706.707 2-1.999-.706-.707z" fill="currentColor"></path></svg>
+            Randomize
+          </button>
+        </div>
+      </div>
+      <div id="banner-container" class="flex sticky top-0 z-50 justify-center">
+        <div id="banner" class="banner inline-flex items-center text-center">
+          <div id="banner-text" class="banner-text w-full items-center text-center" placeholder="Edit here" contenteditable="true">
+          Edit here
+          </div>
+        </div>
+      </div>
+      <div id="bannersize" class="flex flex-col items-center justify-center space-x-4 font-bold">
+        <div class="inline-flex items-center space-x-8 border-b-2 w-3/5 p-2 m-2 bg-green-100 border-green-700">
+          <span class="text-xl font-bold">Size</span>
+        </div>
+        <div class="flex flex-wrap justify-center space-x-4">
+          <div class="text-lg">Width</div>
+          <div>
+            <input id="bannerwd" class="bg-gray-300 rounded-md w-20 text-right font-bold border border-black border-solid" type="number" value="450" step="10" oninput="resizeBannerWidth(this)">
+          </div>
+          <div class="text-lg">Height</div>
+          <div>
+            <input id="bannerhg" class="bg-gray-300 rounded-md w-20 text-right font-bold border border-black border-solid" type="number" value="200" step="10" oninput="resizeBannerHeight(this)">
+          </div>
+        </div>
+        <div class="flex flex-wrap justify-center space-x-4">
+          <div class="text-lg">Border color</div>
+          <input id="banner-bd-color"  class="w-20 text-center rounded-md border border-black border-solid"></input>
+          <div class="text-lg">Border Width</div>
+          <input id="borderw" class="bg-gray-300 rounded-md w-20 text-right font-bold border border-black border-solid" type="number" value="0" min="0" oninput="resizeBannerBorber(this)"/>
+        </div>
+      </div>
+      <div id="background" class="flex flex-col space-x-8 items-center justify-center font-bold">
+        <div class="inline-flex items-center space-x-8 border-b-2 w-3/5 p-2 m-2 bg-green-100 border-green-700">
+          <span class="text-xl font-bold">Background</span>
+          <button id="reset" class="bg-black rounded-md text-white p-1 m-2 font-bold w-20 hover:bg-red-700 justify-center" onclick="resetBannerImage()">Reset</button>
+        </div>
+        <div class="flex items-center justify-center space-x-8">
+          <span class="text-lg">Color</span>
+          <input id="banner-color" class="bg-gray-300 text-center rounded-md w-20 font-bold border border-black border-solid"></input>
+        </div>
+        <div class="flex items-center justify-center space-x-8">
+          <span class="text-lg">Image Upload</span>
+          <input type="file" id="banner-image" class="bg-black rounded-md text-white m-1 font-bold w-20 hover:bg-red-700"></input>
+        </div>
+        <div class="flex items-center justify-center space-x-8">
+          <span class="text-lg">Image Url</span>
+          <input type="text" id="banner-url" class="bg-gray-300 rounded-md font-bold border border-black border-solid"/>
+          <button id="fullbg" onclick="setBannerImage('full', 'full')" class="text-center bg-black rounded-md text-white p-1 m-2 font-bold hover:bg-red-700">fullimage</button>
+        </div>
+        <div class="grid grid-cols-3 text-center">
+          <div class="bgimg align w-20" onclick="alignImage(this, 'left', 'top')">┏</div>
+          <div class="bgimg align" onclick="alignImage(this, 'center', 'top')">┳</div>
+          <div class="bgimg align" onclick="alignImage(this, 'right', 'top')">┓</div>
+          <div class="bgimg align" onclick="alignImage(this, 'left', 'middle')">┣</div>
+          <div class="bgimg align selected" onclick="alignImage(this, 'center', 'middle')">╋</div>
+          <div class="bgimg align" onclick="alignImage(this, 'right', 'middle')">┫</div>
+          <div class="bgimg align" onclick="alignImage(this, 'left', 'bottom')">┗</div>
+          <div class="bgimg align" onclick="alignImage(this, 'center', 'bottom')">┻</div>
+          <div class="bgimg align" onclick="alignImage(this, 'right', 'bottom')">┛</div>
+        </div>
+      </div>
+      <div id="font" class="flex flex-col space-x-8 items-center justify-center font-bold">
+        <div class="inline-flex items-center space-x-8 border-b-2 w-3/5 p-2 m-2 bg-green-100 border-green-700">
+          <span class="text-xl font-bold">Text</span>
+        </div>
+        <div class="flex items-center justify-center space-x-8">
+          <span class="text-lg">Color</span>
+          <input id="banner-txt-color" class="bg-gray-300 text-center rounded-md w-20 font-bold border border-black border-solid"></input>
+        </div>
+        <div class="flex items-center justify-center space-x-8">
+          <span class="text-lg">Style</span>
+          <select id="fontstyle" onchange="changeFont(this);" class="bg-gray-300 text-center rounded-md w-30 font-bold border border-black border-solid">
+            <option value="Black And White Picture, sans-serif">Black And White Picture</option>
+            <option value="Fredoka One, cursive">Fredoka One</option>
+            <option value="Noto Sans KR, sans-serif" selected="selected">Noto Sans KR</option>
+            <option value="Single Day, cursive">Single Day</option>
+            <option value="Zen Dots, cursive">Zen Dots</option>
+          </select>
+          <span class="text-lg">Size</span>
+          <input id="fontsize" type="number" oninput="changeFontSize(this)" class="bg-gray-300 rounded-md w-20 text-right font-bold border border-black border-solid" value="50" min="14" max="200"/>
+        </div>
+        <div class="flex flex-wrap items-center justify-center space-x-8">
+          <span class="text-lg">Shadow</span>
+          <input id="txt-shadow-color" class="bg-gray-300 text-center rounded-md w-20 font-bold border border-black border-solid"></input>
+          <span class="text-lg">X</span><input id="shadowx" type="number" oninput="changeTextShadowX(this)" value="0"  class="bg-gray-300 rounded-md w-10 text-right font-bold border border-black border-solid"/>
+          <span class="text-lg">Y</span><input id="shadowy" type="number" oninput="changeTextShadowY(this)" value="0"  class="bg-gray-300 rounded-md w-10 text-right font-bold border border-black border-solid"/>
+          <span class="text-lg">Blur</span><input id="shadowblur" type="number" oninput="changeTextShadowBlur(this)" value="0" min="0" class="bg-gray-300 rounded-md w-10 text-right font-bold border border-black border-solid"/>
+        </div>
+        <div class="grid grid-cols-3 text-center">
+          <div class="text align w-20" onclick="alignText(this, 'left', 'flex-start')">┏</div>
+          <div class="text align" onclick="alignText(this, 'center', 'flex-start')">┳</div>
+          <div class="text align" onclick="alignText(this, 'right', 'flex-start')">┓</div>
+          <div class="text align" onclick="alignText(this, 'left', 'center')">┣</div>
+          <div class="text align selected" onclick="alignText(this, 'center', 'center')">╋</div>
+          <div class="text align" onclick="alignText(this, 'right', 'center')">┫</div>
+          <div class="text align" onclick="alignText(this, 'left', 'flex-end')">┗</div>
+          <div class="text align" onclick="alignText(this, 'center', 'flex-end')">┻</div>
+          <div class="text align" onclick="alignText(this, 'right', 'flex-end')">┛</div>
+        </div>
+
+      </div>
+    </main>
+    <footer>
+      <canvas id="my-canvas" class="invisible"></canvas>
+      <img id="my-image" class="invisible">
+      <script src="js/index.js"></script>
+    </footer>
+  </body>
+</html>

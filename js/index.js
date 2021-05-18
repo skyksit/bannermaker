@@ -13,7 +13,7 @@ const downloadBanner = () => {
     windowWidth: document.documentElement.offsetWidth,
     windowHeight: document.documentElement.offsetHeight,
   }).then((canvas) => {
-    saveAs(canvas.toDataURL(), "banner-maker" + Date.now() + "png");
+    saveAs(canvas.toDataURL(), "banner-maker" + Date.now() + ".png");
   });
 };
 const saveAs = (uri, filename) => {
@@ -100,7 +100,6 @@ const randomizePicture = () => {
       "&h=" +
       bannerhg * 1.5 +
       "&q=90";
-    console.log(randomNum);
     getURLImage();
   });
 };

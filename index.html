@@ -69,6 +69,7 @@
     <meta name="twitter:image" content="icons/icon-144x144.png" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/huebee.min.css" media="screen">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="js/huebee.pkgd.min.js"></script>
   </head>
@@ -87,7 +88,7 @@
           </button>
         </div>
         <div class="inline-block">
-          <button id="random" class="text-center bg-black rounded-md text-white p-1 m-2 font-bold hover:bg-red-700" onclick="randomizeColor()">
+          <button id="random" class="text-center bg-black rounded-md text-white p-1 m-2 font-bold hover:bg-red-700" onclick="randomize()">
             <svg viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="inline"><path d="M14 8.495v-.5h-1v.5h1zM7.5 2.999H8v-1h-.5v1zm1-.5l.353.353.354-.353-.354-.354-.353.354zM13 8.495a5.499 5.499 0 01-5.5 5.496v1c3.589 0 6.5-2.909 6.5-6.496h-1zM7.5 13.99A5.499 5.499 0 012 8.495H1a6.499 6.499 0 006.5 6.496v-1zM2 8.495a5.499 5.499 0 015.5-5.496v-1A6.499 6.499 0 001 8.495h1zM6.147.854l2 1.998.706-.707-2-1.999-.706.708zm2 1.291l-2 1.999.706.707 2-1.999-.706-.707z" fill="currentColor"></path></svg>
             Randomize
           </button>
@@ -174,8 +175,8 @@
         <div class="flex flex-wrap items-center justify-center space-x-8">
           <span class="text-lg">Shadow</span>
           <input id="txt-shadow-color" class="bg-gray-300 text-center rounded-md w-20 font-bold border border-black border-solid"></input>
-          <span class="text-lg">X</span><input id="shadowx" type="number" oninput="changeTextShadowX(this)" value="0"  class="bg-gray-300 rounded-md w-10 text-right font-bold border border-black border-solid"/>
-          <span class="text-lg">Y</span><input id="shadowy" type="number" oninput="changeTextShadowY(this)" value="0"  class="bg-gray-300 rounded-md w-10 text-right font-bold border border-black border-solid"/>
+          <span class="text-lg">X</span><input id="shadowx" type="number" oninput="changeTextShadowX(this)" value="1"  class="bg-gray-300 rounded-md w-10 text-right font-bold border border-black border-solid"/>
+          <span class="text-lg">Y</span><input id="shadowy" type="number" oninput="changeTextShadowY(this)" value="1"  class="bg-gray-300 rounded-md w-10 text-right font-bold border border-black border-solid"/>
           <span class="text-lg">Blur</span><input id="shadowblur" type="number" oninput="changeTextShadowBlur(this)" value="0" min="0" class="bg-gray-300 rounded-md w-10 text-right font-bold border border-black border-solid"/>
         </div>
         <div class="grid grid-cols-3 text-center">

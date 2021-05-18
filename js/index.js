@@ -7,8 +7,13 @@ const bannerBorderColor = document.getElementById("banner-bd-color");
 const textShadowColor = document.getElementById("txt-shadow-color");
 
 const downloadBanner = () => {
-  html2canvas(banner).then((canvas) => {
-    saveAs(canvas.toDataURL(), "banner-maker.png");
+  html2canvas(banner, {
+    scrollX: -window.scrollX,
+    scrollY: -window.scrollY,
+    windowWidth: document.documentElement.offsetWidth,
+    windowHeight: document.documentElement.offsetHeight,
+  }).then((canvas) => {
+    saveAs(canvas.toDataURL(), "banner-maker" + Date.now() + "png");
   });
 };
 const saveAs = (uri, filename) => {
@@ -82,12 +87,37 @@ hueb4.setColor(
   getComputedStyle(document.documentElement).getPropertyValue("--txt-shadow-color")
 );
 
-randomizeColor();
+const randomizePicture = () => {
+  const bannerwd = document.getElementById("bannerwd").value;
+  const bannerhg = document.getElementById("bannerhg").value;
 
-const resizeBannerWidth = ({ value }) => (banner.style.width = value + `px`);
-const resizeBannerHeight = ({ value }) => (banner.style.height = value + `px`);
+  $.getJSON("unsplash.json", function (json) {
+    const randomNum = Math.floor(Math.random() * json.length);
+    document.getElementById("banner-url").value =
+      json[randomNum].url +
+      "?auto=format&fit=crop&w=" +
+      bannerwd * 1.5 +
+      "&h=" +
+      bannerhg * 1.5 +
+      "&q=90";
+    console.log(randomNum);
+    getURLImage();
+  });
+};
+
+const randomize = () => {
+  randomizeColor();
+  randomizePicture();
+};
+
+randomize();
+
+const resizeBannerWidth = ({ value }) =>
+  root.style.setProperty("--banner-width", `${value}px`);
+const resizeBannerHeight = ({ value }) =>
+  root.style.setProperty("--banner-height", `${value}px`);
 const resizeBannerBorber = ({ value }) =>
-root.style.setProperty("--banner-bd-width", `${value}px`);
+  root.style.setProperty("--banner-bd-width", `${value}px`);
 
 const getBannerImage = () => {
   const file = document.getElementById("banner-image").files[0];
@@ -109,20 +139,21 @@ document.getElementById("banner-image").addEventListener("change", getBannerImag
 
 const resetBannerImage = () => {
   banner.style.backgroundImage = ``;
-  document.getElementById("banner-image").value = '';
-  document.getElementById("banner-url").value = '';
-  document.getElementById("my-canvas").value = '';
-  document.getElementById("my-image").src = '';
+  document.getElementById("banner-image").value = "";
+  document.getElementById("banner-url").value = "";
+  document.getElementById("my-canvas").value = "";
+  document.getElementById("my-image").src = "";
 };
 
-const getURLImage = (e, h ='center', v ='middle') => {
+const getURLImage = (e, h = "center", v = "middle") => {
   const imgurl = document.getElementById("banner-url").value;
-  var img = document.getElementById('my-image');
-  img.crossOrigin = '';   //CORS
+  var img = document.getElementById("my-image");
+  img.crossOrigin = "Anonymous"; //CORS
   img.src = imgurl;
   setBannerImage(h, v);
-};
-const setBannerImage = (h ='center', v ='middle') => {
+};;
+
+const setBannerImage = (h = "center", v = "middle") => {
   var canvas = document.getElementById("my-canvas");
   var ctx = canvas.getContext("2d");
   const canvasw = document.getElementById("bannerwd").value;
@@ -131,37 +162,58 @@ const setBannerImage = (h ='center', v ='middle') => {
 
   canvas.width = canvasw;
   canvas.height = canvash;
-  const hvswitch = (value, wh) => ({
-    "left": 0,
-    "center": (wh-canvas.width)/2,
-    "right": (wh-canvas.width),
-    "top":0,
-    "middle": (wh-canvas.height)/2,
-    "bottom": (wh-canvas.height)
-  })[value]
+  const hvswitch = (value, wh) =>
+    ({
+      left: 0,
+      center: (wh - canvas.width) / 2,
+      right: wh - canvas.width,
+      top: 0,
+      middle: (wh - canvas.height) / 2,
+      bottom: wh - canvas.height,
+    }[value]);
 
   sourceImg.onload = () => {
-    if(h==="full") { 
+    if (h === "full") {
       ctx.drawImage(sourceImg, 0, 0, canvas.width, canvas.height);
     } else {
-      ctx.drawImage(sourceImg, hvswitch(h, sourceImg.width), hvswitch(v, sourceImg.height), canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
+      ctx.drawImage(
+        sourceImg,
+        hvswitch(h, sourceImg.width),
+        hvswitch(v, sourceImg.height),
+        canvas.width,
+        canvas.height,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
     }
     var imgbase64 = canvas.toDataURL();
     banner.style.backgroundImage = `url('${imgbase64}')`;
-  }
+  };
 
   if (sourceImg.src && sourceImg) {
     //full image
-    if(h==="full") { 
+    if (h === "full") {
       ctx.drawImage(sourceImg, 0, 0, canvas.width, canvas.height);
     } else {
-      ctx.drawImage(sourceImg, hvswitch(h, sourceImg.width), hvswitch(v, sourceImg.height), canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
+      ctx.drawImage(
+        sourceImg,
+        hvswitch(h, sourceImg.width),
+        hvswitch(v, sourceImg.height),
+        canvas.width,
+        canvas.height,
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      );
     }
     var imgbase64 = canvas.toDataURL();
     banner.style.backgroundImage = `url('${imgbase64}')`;
   }
+};
 
-}
 document.getElementById("banner-url").addEventListener("blur", getURLImage, true);
 
 const alignImage = ({ classList }, h, v) => {

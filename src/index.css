@@ -7,17 +7,19 @@
   --banner-txt-color: #fff;
   --banner-bd-color: #f00;
   --banner-bd-width: 0;
-  --txt-shadow-x: 0;
-  --txt-shadow-y: 0;
-  --txt-shadow-b: 0;
+  --banner-width: 450px;
+  --banner-height: 200px;
+  --txt-shadow-x: 1px;
+  --txt-shadow-y: 1px;
+  --txt-shadow-b: 0px;
   --txt-shadow-color: #2A2A2A;
 }
 
 .banner {
-  @apply text-center justify-center m-4 p-8;
+  @apply text-center justify-center;
   @apply bg-cover bg-center bg-no-repeat;
-  width: 450px;
-  height: 200px;
+  width: var(--banner-width);
+  height: var(--banner-height);
   border: var(--banner-bd-width) solid var(--banner-bd-color);
   background-color: var(--banner-color);
   color: var(--banner-txt-color);

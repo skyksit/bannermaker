@@ -4,30 +4,39 @@
 
 :root {
   --banner-color: #000;
-  --banner-txt-color: #fff;
+  --title-color: #fff;
   --banner-bd-color: #f00;
   --banner-bd-width: 0;
   --banner-width: 600px;
   --banner-height: 260px;
-  --txt-shadow-x: 1px;
-  --txt-shadow-y: 1px;
-  --txt-shadow-b: 0px;
-  --txt-shadow-color: #2A2A2A;
+  --title-shadow-x: 1px;
+  --title-shadow-y: 1px;
+  --title-shadow-b: 0px;
+  --title-shadow-color: #2A2A2A;
+  --paragraph-shadow-x: 1px;
+  --paragraph-shadow-y: 1px;
+  --paragraph-shadow-b: 0px;
+  --paragraph-shadow-color: #2A2A2A;
 }
 
 .banner {
   @apply text-center justify-center;
-  @apply bg-cover bg-center bg-no-repeat;
+  @apply bg-center bg-no-repeat;
   width: var(--banner-width);
   height: var(--banner-height);
   border: var(--banner-bd-width) solid var(--banner-bd-color);
   background-color: var(--banner-color);
-  color: var(--banner-txt-color);
+  position: relative;
 }
 
-.banner-text {
-  @apply text-4xl font-bold leading-4;
-  text-shadow: var(--txt-shadow-x) var(--txt-shadow-y) var(--txt-shadow-b) var(--txt-shadow-color);
+.title {
+  @apply text-5xl font-bold w-2/4;
+  color: var(--title-color);
+  text-shadow: var(--title-shadow-x) var(--title-shadow-y) var(--title-shadow-b) var(--title-shadow-color);
+}
+
+.paragraph {
+  text-shadow: var(--paragraph-shadow-x) var(--paragraph-shadow-y) var(--paragraph-shadow-b) var(--paragraph-shadow-color);
 }
 
 .selected {
@@ -36,4 +45,12 @@
 
 .align {
   @apply font-bold cursor-pointer;
+}
+.color {
+  padding: 14px;
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(0, 0, 0, 0.3);
+  border-radius: 10%;
+  cursor: pointer;
 }

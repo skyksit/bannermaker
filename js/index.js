@@ -201,10 +201,10 @@ const setBannerPicture = () => {
   const unsplashList = localStorage.getItem("unsplashList");
   let backgroundPictures = JSON.parse(unsplashList);
   const randomNum = Math.floor(Math.random() * backgroundPictures.length);
-  $("#banner_url").val(backgroundPictures[randomNum].url + "?auto=format");
+  $("#banner_url").val(backgroundPictures[randomNum].url);
   $("#banner").css(
     "background",
-    "url(" + backgroundPictures[randomNum].url + "?auto=format)"
+    "url(" + backgroundPictures[randomNum].url + ")"
   );
 };
 
